@@ -23,12 +23,12 @@ class Solution:
 
         res = 0
         numsLen = len(nums)
-        minNeg = [0]
-        maxPos = [0]
+        lastMin = 0
+        lastMax = 0
 
         for i, num in enumerate(nums):
-            minNeg.append(min(num, num + minNeg[i]))
-            maxPos.append(max(num, num + maxPos[i]))
-            res = max(res, max(abs(minNeg[-1]), abs(maxPos[-1])))
+            lastMin = min(num, num + lastMin)
+            lastMax = max(num, num + lastMax)
+            res = max(res, max(abs(lastMin), abs(lastMax)))
 
         return res
